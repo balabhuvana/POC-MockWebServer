@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             val registrationRequestModel = RegisterRequestModel()
 
             registrationRequestModel.userName = etUserName.text.toString()
-            registrationRequestModel.password = "abcd@123"
+            registrationRequestModel.password = "abcdzxr@123"
             registrationRequestModel.phoneNumber = "8489966535"
             registrationRequestModel.firstName = "apple"
             registrationRequestModel.lastName = "apple"
@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
             getLoginApiInterface()?.registerUser(registrationRequestModel)
                 ?.enqueue(object : Callback<RegisterResponseModel> {
                     override fun onFailure(call: Call<RegisterResponseModel>, t: Throwable) {
-                        Log.i("----> ", "onFailure")
+                        Log.i("----> ", "onFailure - "+call.request().url)
+                        Log.i("----> ", "onFailure - "+t.localizedMessage)
                     }
 
                     override fun onResponse(
